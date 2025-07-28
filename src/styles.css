@@ -129,3 +129,8 @@ table {
 .mdc-line-ripple {
     display: none;
 }
+
+/* Map */
+.gm-style-iw-chr {
+    display: none !important;
+}

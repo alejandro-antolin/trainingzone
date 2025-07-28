@@ -19,6 +19,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { environment } from '../environments/environment';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 registerLocaleData(localeEs, 'es');
 
@@ -26,7 +28,6 @@ registerLocaleData(localeEs, 'es');
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
-
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent],
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     ContainerComponent,
     FontAwesomeModule,
+    GoogleMapsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -49,7 +51,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [provideHttpClient(), { provide: LOCALE_ID, useValue: 'es-ES' }],
+  providers: [
+    provideHttpClient(),
+     { provide: LOCALE_ID, useValue: 'es-ES' }
+    ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
